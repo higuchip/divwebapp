@@ -68,6 +68,26 @@ let btn_upload = document.getElementById("btn-upload-csv").addEventListener("cli
             let PropSpp = comunidade.map(pi);
             console.log(PropSpp);
 
+            // Simpson's D calculation
+            // Calculate pi^2
+            let pi_squared = PropSpp.map(p => p * p);
+
+            // Calculate Simpson's D
+            let sum_pi_squared = pi_squared.reduce((sum, val) => sum + val, 0);
+            let simpsonD = parseFloat(sum_pi_squared).toFixed(2);
+
+            // Calculate Simpson's Index of Diversity (1-D)
+            let simpson_1_minus_D_raw = 1 - sum_pi_squared;
+            let formatted_simpson_1_minus_D = parseFloat(simpson_1_minus_D_raw).toFixed(2);
+
+            // Calculate Inverse Simpson Index (1/D)
+            let formatted_inverse_simpson_D;
+            if (sum_pi_squared === 0) {
+                formatted_inverse_simpson_D = "N/A";
+            } else {
+                let inverse_simpson_D_raw = 1 / sum_pi_squared;
+                formatted_inverse_simpson_D = parseFloat(inverse_simpson_D_raw).toFixed(2);
+            }
 
             // log de pi
 
@@ -106,6 +126,9 @@ let btn_upload = document.getElementById("btn-upload-csv").addEventListener("cli
             resultado.innerHTML += `<p> Total de espécies: ${spp} spp; </p>`
             resultado.innerHTML += `<p> Índice de Shannon: ${H} nat.ind; </p>`
             resultado.innerHTML += `<p> Equabilidade de Pielou: ${J}. </p>`
+            resultado.innerHTML += `<p> Índice de Simpson (D): ${simpsonD}</p>`;
+            resultado.innerHTML += `<p> Índice de Diversidade de Simpson (1-D): ${formatted_simpson_1_minus_D}</p>`;
+            resultado.innerHTML += `<p> Índice de Simpson Inverso (1/D): ${formatted_inverse_simpson_D}</p>`;
 
         }
     });
