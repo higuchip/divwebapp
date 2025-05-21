@@ -8,6 +8,41 @@ let btn_upload = document.getElementById("btn-upload-csv").addEventListener("cli
         dynamicTyping: true,
         complete: function (results) {
 
+            // Display input data in the table
+            const table = document.getElementById("tbl-data");
+            table.innerHTML = ""; // Clear existing table content
+
+            // Create table header
+            if (results.meta.fields && results.meta.fields.length > 0) {
+                const thead = document.createElement("thead");
+                const headerRow = document.createElement("tr");
+                results.meta.fields.forEach(field => {
+                    const th = document.createElement("th");
+                    th.textContent = field;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+            }
+
+            // Create table body
+            if (results.data && results.data.length > 0) {
+                const tbody = document.createElement("tbody");
+                results.data.forEach(rowData => {
+                    const row = document.createElement("tr");
+                    // Ensure order of columns by iterating over fields again
+                    if (results.meta.fields) {
+                        results.meta.fields.forEach(field => {
+                            const td = document.createElement("td");
+                            td.textContent = rowData[field] !== undefined ? rowData[field] : "";
+                            row.appendChild(td);
+                        });
+                    }
+                    tbody.appendChild(row);
+                });
+                table.appendChild(tbody);
+            }
+
             // Riqueza
 
             console.log("calculando...")
@@ -76,4 +111,3 @@ let btn_upload = document.getElementById("btn-upload-csv").addEventListener("cli
     });
 
 });
-
