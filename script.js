@@ -1,8 +1,13 @@
-let resultado = document.getElementById("resultado");
+const resultado = document.getElementById("resultado");
+const btnUpload = document.getElementById("btn-upload-csv");
 
-let btn_upload = document.getElementById("btn-upload-csv").addEventListener("click", () => {
-    Papa.parse(document.getElementById("upload-csv").files[0], {
-        download: true,
+btnUpload.addEventListener("click", () => {
+    const file = document.getElementById("upload-csv").files[0];
+    if (!file) {
+        alert("Selecione um arquivo CSV");
+        return;
+    }
+    Papa.parse(file, {
         header: true,
         skipEmptyLines: true,
         dynamicTyping: true,
