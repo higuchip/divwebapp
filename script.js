@@ -46,9 +46,9 @@ let btn_upload = document.getElementById("btn-upload-csv").addEventListener("cli
             // Riqueza
 
             console.log("calculando...")
-            data = results;
-            comunidade = data.data
-            let spp = comunidade.length;
+            const data = results;
+            const comunidade = data.data;
+            const spp = comunidade.length;
 
 
             // Total de individuos
