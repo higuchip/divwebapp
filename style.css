@@ -4,9 +4,9 @@ body{
 }
 
 .container {
-    max-width: 300px;
+    max-width: 80%;
     margin: auto;
-    background-color:  #c8f7cc;;
+    background-color:  #c8f7cc;
     padding: 20px;
     border-radius: 20px;
 }
@@ -24,6 +24,23 @@ input {
        }
 
 button {
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
     display: block;
     box-sizing: border-box;
     }
+#tbl-data {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+#tbl-data th, #tbl-data td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#resultado {
+    margin-top: 20px;
+    font-weight: bold;
+}
