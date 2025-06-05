@@ -51,9 +51,9 @@ btnUpload.addEventListener("click", () => {
             // Riqueza
 
             console.log("calculando...")
-            data = results;
-            comunidade = data.data
-            let spp = comunidade.length;
+            const data = results;
+            const comunidade = data.data;
+            const spp = comunidade.length;
 
 
             // Total de individuos
