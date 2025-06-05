@@ -23,6 +23,12 @@ input {
     margin-bottom: 10px;
        }
 
+label[for="upload-csv"] {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 button {
     display: block;
     box-sizing: border-box;
